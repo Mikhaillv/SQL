@@ -1,0 +1,209 @@
+mysql> CREATE database Mihail_Latyshev_bd_exam;
+Query OK, 1 row affected (0.05 sec)
+
+mysql> USE Mihail_Latyshev_bd_exam;
+Database changed
+
+mysql> USE Mihail_Latyshev_bd_exam;
+Database changed
+mysql> CREATE table Pets
+    -> (ID INT(20) NOT NULL PRIMARY KEY,
+    -> pet_type VARCHAR(25) NULL,
+    -> pet_name VARCHAR(25) NULL,
+    -> pet_owner_ID INT(20) NOT NULL);
+Query OK, 0 rows affected, 2 warnings (0.39 sec)
+
+mysql> DESC pets;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| ID           | int         | NO   | PRI | NULL    |       |
+| pet_type     | varchar(25) | YES  |     | NULL    |       |
+| pet_name     | varchar(25) | YES  |     | NULL    |       |
+| pet_owner_ID | int         | NO   |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+4 rows in set (0.17 sec)
+
+mysql> INSERT INTO pets VALUES (1,"dog", "Jack", "1");
+Query OK, 1 row affected (0.10 sec)
+
+mysql> INSERT INTO pets VALUES (2,"dog", "Rocki", "2");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO pets VALUES (3,"dog", "Nik", "3");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO pets VALUES (4,"dog", "Totti", "4");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO pets VALUES (5,"dog", "Toffi", "5");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO pets VALUES (6,"cat", "Tik", "1");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO pets VALUES (7,"cat", "Vasia", "2");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO pets VALUES (8,"cat", "Toki", "3");
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO pets VALUES (9,"cat", "Fox", "4");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO pets VALUES (10,"cat", "Fix", "5");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO pets VALUES (11,"hamster", "Keks", "1");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO pets VALUES (12,"hamster", "Kiki", "2");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO pets VALUES (13,"hamster", "Mini", "3");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO pets VALUES (14,"hamster", "Max", "4");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO pets VALUES (15,"hamster", "Rik", "5");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO pets VALUES (16,"horse", "Max", "1");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO pets VALUES (17,"horse", "Pit", "2");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO pets VALUES (18,"lizard", "Moko", "3");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO pets VALUES (19,"lizard", "Maui", "4");
+Query OK, 1 row affected (0.04 sec)
+
+mysql> INSERT INTO pets VALUES (20,"unicorn", "Toto", "5");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> SELECT * FROM pets;
++----+----------+----------+--------------+
+| ID | pet_type | pet_name | pet_owner_ID |
++----+----------+----------+--------------+
+|  1 | dog      | Jack     |            1 |
+|  2 | dog      | Rocki    |            2 |
+|  3 | dog      | Nik      |            3 |
+|  4 | dog      | Totti    |            4 |
+|  5 | dog      | Toffi    |            5 |
+|  6 | cat      | Tik      |            1 |
+|  7 | cat      | Vasia    |            2 |
+|  8 | cat      | Toki     |            3 |
+|  9 | cat      | Fox      |            4 |
+| 10 | cat      | Fix      |            5 |
+| 11 | hamster  | Keks     |            1 |
+| 12 | hamster  | Kiki     |            2 |
+| 13 | hamster  | Mini     |            3 |
+| 14 | hamster  | Max      |            4 |
+| 15 | hamster  | Rik      |            5 |
+| 16 | horse    | Max      |            1 |
+| 17 | horse    | Pit      |            2 |
+| 18 | lizard   | Moko     |            3 |
+| 19 | lizard   | Maui     |            4 |
+| 20 | unicorn  | Toto     |            5 |
++----+----------+----------+--------------+
+20 rows in set (0.04 sec)
+
+mysql> CREATE table Owners;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> CREATE table Owners
+    -> (ID INT(10) NOT NULL PRIMARY KEY,
+    -> owner_name VARCHAR(30) NULL,
+    -> owner_surname VARCHAR(30) NULL,
+    -> pet_purchase_date_year YEAR NOT NULL);
+Query OK, 0 rows affected, 1 warning (0.40 sec)
+
+mysql> DESC owners;
++------------------------+-------------+------+-----+---------+-------+
+| Field                  | Type        | Null | Key | Default | Extra |
++------------------------+-------------+------+-----+---------+-------+
+| ID                     | int         | NO   | PRI | NULL    |       |
+| owner_name             | varchar(30) | YES  |     | NULL    |       |
+| owner_surname          | varchar(30) | YES  |     | NULL    |       |
+| pet_purchase_date_year | year        | NO   |     | NULL    |       |
++------------------------+-------------+------+-----+---------+-------+
+4 rows in set (0.10 sec)
+
+mysql> SELECT * FROM owners;
+Empty set (0.04 sec)
+
+mysql> INSERT INTO owners VALUES (1,"Anton", "Antonov", "2020");
+Query OK, 1 row affected (0.19 sec)
+
+mysql> INSERT INTO owners VALUES (2,"Ivan", "Ivanov", "2000");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO owners VALUES (3,"Vasia", "Vasin", "2011");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO owners VALUES (4,"Artur", "Sidorov", "2020");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO owners VALUES (5,"Maksim", "Novak", "1990");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM owners;
++----+------------+---------------+------------------------+
+| ID | owner_name | owner_surname | pet_purchase_date_year |
++----+------------+---------------+------------------------+
+|  1 | Anton      | Antonov       |                   2020 |
+|  2 | Ivan       | Ivanov        |                   2000 |
+|  3 | Vasia      | Vasin         |                   2011 |
+|  4 | Artur      | Sidorov       |                   2020 |
+|  5 | Maksim     | Novak         |                   1990 |
++----+------------+---------------+------------------------+
+5 rows in set (0.03 sec)
+
+mysql> SELECT owners.owner_name, owners.owner_surname, pets.pet_type
+    -> FROM owners INNER JOIN pets
+    -> ON owners.id=pets.pet_owner_id AND pet_type="hamster";
++------------+---------------+----------+
+| owner_name | owner_surname | pet_type |
++------------+---------------+----------+
+| Anton      | Antonov       | hamster  |
+| Ivan       | Ivanov        | hamster  |
+| Vasia      | Vasin         | hamster  |
+| Artur      | Sidorov       | hamster  |
+| Maksim     | Novak         | hamster  |
++------------+---------------+----------+
+5 rows in set (0.09 sec)
+
+mysql> SELECT pets.pet_type, pets.pet_name, owners.pet_purchase_date_year
+    -> FROM pets, owners
+    -> WHERE owners.id=pets.pet_owner_id
+    -> AND owners.pet_purchase_date_year<"2010";
++----------+----------+------------------------+
+| pet_type | pet_name | pet_purchase_date_year |
++----------+----------+------------------------+
+| dog      | Rocki    |                   2000 |
+| dog      | Toffi    |                   1990 |
+| cat      | Vasia    |                   2000 |
+| cat      | Fix      |                   1990 |
+| hamster  | Kiki     |                   2000 |
+| hamster  | Rik      |                   1990 |
+| horse    | Pit      |                   2000 |
+| unicorn  | Toto     |                   1990 |
++----------+----------+------------------------+
+8 rows in set (0.16 sec)
+
+mysql> SELECT pets.pet_type, owners.pet_purchase_date_year
+    -> FROM pets INNER JOIN owners
+    -> ON owners.id=pets.pet_owner_id
+    -> WHERE pets.pet_type LIKE "%i%";
++----------+------------------------+
+| pet_type | pet_purchase_date_year |
++----------+------------------------+
+| lizard   |                   2011 |
+| lizard   |                   2020 |
+| unicorn  |                   1990 |
++----------+------------------------+
+3 rows in set (0.17 sec)
+
+

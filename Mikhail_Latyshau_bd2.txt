@@ -1,0 +1,220 @@
+mysql> CREATE database Mikhail_Latyshau;
+Query OK, 1 row affected (0.47 sec)
+
+mysql> USE Mikhail_Latyshau;
+Database changed
+
+mysql> CREATE table Students
+    -> (ID INT(10) NOT NULL PRIMARY KEY,
+    -> first_name VARCHAR(30) NULL,
+    -> last_name VARCHAR(30) NULL,
+    -> exam VARCHAR(10) NULL,
+    -> grade VARCHAR(1) NULL,
+    -> examiner_ID INT(5) NOT NULL);
+Query OK, 0 rows affected (1.03 sec)
+
+mysql> DESC students;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| ID          | int(10)     | NO   | PRI | NULL    |       |
+| first_name  | varchar(30) | YES  |     | NULL    |       |
+| last_name   | varchar(30) | YES  |     | NULL    |       |
+| exam        | varchar(10) | YES  |     | NULL    |       |
+| grade       | varchar(1)  | YES  |     | NULL    |       |
+| examiner_ID | int(5)      | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+6 rows in set (0.22 sec)
+
+mysql> INSERT INTO students VALUES (1,"Ivan", "Ivanov", "math", "A",1);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> SELECT * FROM students;
++----+------------+-----------+------+-------+-------------+
+| ID | first_name | last_name | exam | grade | examiner_ID |
++----+------------+-----------+------+-------+-------------+
+|  1 | Ivan       | Ivanov    | math | A     |           1 |
++----+------------+-----------+------+-------+-------------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO students VALUES (2,"Anton", "Antonov", "bio", "B",2);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO students VALUES (2,"Anton", "Antonov", "bio", "B",2);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO students VALUES (3,"Piotr", "Petrov", "geo", "C",3);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO students VALUES (4,"Vasia", "Vasin", "inf", "D",4);
+Query OK, 1 row affected (0.27 sec)
+
+mysql> INSERT INTO students VALUES (5,"Sidr", "Sidorov", "phys", "E",5);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO students VALUES (6,"Andrei", "Ionov", "math", "F",1);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO students VALUES (7,"Sergei", "Karpov", "bio", "A",2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO students VALUES (8,"Tolik", "Osipov", "bio", "B",3);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO students VALUES (9,"Dima", "Titov", "inf", "C",4);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO students VALUES (10,"Valera", "Arshavin", "phys", "D",5);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> UPDATE students SET exam="geo" WHERE ID=8;
+Query OK, 1 row affected (0.11 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM students;
++----+------------+-----------+------+-------+-------------+
+| ID | first_name | last_name | exam | grade | examiner_ID |
++----+------------+-----------+------+-------+-------------+
+|  1 | Ivan       | Ivanov    | math | A     |           1 |
+|  2 | Anton      | Antonov   | bio  | B     |           2 |
+|  3 | Piotr      | Petrov    | geo  | C     |           3 |
+|  4 | Vasia      | Vasin     | inf  | D     |           4 |
+|  5 | Sidr       | Sidorov   | phys | E     |           5 |
+|  6 | Andrei     | Ionov     | math | F     |           1 |
+|  7 | Sergei     | Karpov    | bio  | A     |           2 |
+|  8 | Tolik      | Osipov    | geo  | B     |           3 |
+|  9 | Dima       | Titov     | inf  | C     |           4 |
+| 10 | Valera     | Arshavin  | phys | D     |           5 |
++----+------------+-----------+------+-------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> CREATE table Grade_table
+    -> (grade VARCHAR(1) NULL,
+    -> results VARCHAR(20) NULL);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> DESC grade_table;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| grade   | varchar(1)  | YES  |     | NULL    |       |
+| results | varchar(20) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> INSERT INTO grade_table VALUES ("A","Passed");
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO grade_table VALUES ("B","Passed");
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO grade_table VALUES ("C","Passed");
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO grade_table VALUES ("D","Retake");
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO grade_table VALUES ("E","Retake");
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO grade_table VALUES ("F","Expulsion");
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SELECT * FROM grade_table;
++-------+-----------+
+| grade | results   |
++-------+-----------+
+| A     | Passed    |
+| B     | Passed    |
+| C     | Passed    |
+| D     | Retake    |
+| E     | Retake    |
+| F     | Expulsion |
++-------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> CREATE table Examiner
+    -> (ID INT(5) NOT NULL PRIMARY KEY,
+    -> first_name VARCHAR(30) NULL,
+    -> last_name VARCHAR(30) NULL,
+    -> exam_room INT(3) NOT NULL);
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> DESC Examiner;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| ID         | int(5)      | NO   | PRI | NULL    |       |
+| first_name | varchar(30) | YES  |     | NULL    |       |
+| last_name  | varchar(30) | YES  |     | NULL    |       |
+| exam_room  | int(3)      | NO   |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+
+mysql> INSERT INTO examiner VALUES (1,"Artur", "Simonian",123);
+Query OK, 1 row affected (0.28 sec)
+
+mysql> INSERT INTO examiner VALUES (2,"Sveta", "Green",321);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO examiner VALUES (3,"Sasha", "Novak",231);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> INSERT INTO examiner VALUES (4,"Vitia", "Shut",217);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> INSERT INTO examiner VALUES (5,"Vitia", "Shut",307);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SELECT * FROM examiner;
++----+------------+-----------+-----------+
+| ID | first_name | last_name | exam_room |
++----+------------+-----------+-----------+
+|  1 | Artur      | Simonian  |       123 |
+|  2 | Sveta      | Green     |       321 |
+|  3 | Sasha      | Novak     |       231 |
+|  4 | Vitia      | Shut      |       217 |
+|  5 | Vitia      | Shut      |       307 |
++----+------------+-----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT students.first_name, students.last_name,examiner.first_name,examin
+er.last_name,examiner.exam_room
+    -> FROM students INNER JOIN examiner
+    -> ON students.examiner_id=examiner.id;
++------------+-----------+------------+-----------+-----------+
+| first_name | last_name | first_name | last_name | exam_room |
++------------+-----------+------------+-----------+-----------+
+| Ivan       | Ivanov    | Artur      | Simonian  |       123 |
+| Anton      | Antonov   | Sveta      | Green     |       321 |
+| Piotr      | Petrov    | Sasha      | Novak     |       231 |
+| Vasia      | Vasin     | Vitia      | Shut      |       217 |
+| Sidr       | Sidorov   | Vitia      | Shut      |       307 |
+| Andrei     | Ionov     | Artur      | Simonian  |       123 |
+| Sergei     | Karpov    | Sveta      | Green     |       321 |
+| Tolik      | Osipov    | Sasha      | Novak     |       231 |
+| Dima       | Titov     | Vitia      | Shut      |       217 |
+| Valera     | Arshavin  | Vitia      | Shut      |       307 |
++------------+-----------+------------+-----------+-----------+
+10 rows in set (0.08 sec)
+
+mysql> SELECT students.first_name, students.last_name, grade_table.results
+    -> FROM students INNER JOIN grade_table
+    -> ON students.grade=grade_table.grade;
++------------+-----------+-----------+
+| first_name | last_name | results   |
++------------+-----------+-----------+
+| Ivan       | Ivanov    | Passed    |
+| Anton      | Antonov   | Passed    |
+| Piotr      | Petrov    | Passed    |
+| Vasia      | Vasin     | Retake    |
+| Sidr       | Sidorov   | Retake    |
+| Andrei     | Ionov     | Expulsion |
+| Sergei     | Karpov    | Passed    |
+| Tolik      | Osipov    | Passed    |
+| Dima       | Titov     | Passed    |
+| Valera     | Arshavin  | Retake    |
++------------+-----------+-----------+
+10 rows in set (0.08 sec)
+
